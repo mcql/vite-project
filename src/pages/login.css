@@ -1,0 +1,20 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: url("../assets/images/login.jpg") no-repeat right top;
+    background-size: contain;
+    padding-left: 200px;
+    box-sizing: border-box;
+}
+
+.login-form {
+    width: 400px;
+    padding: 40px 30px 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 0 40px #eaeaea;
+}

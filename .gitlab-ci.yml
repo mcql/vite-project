@@ -1,0 +1,46 @@
+# image: node:16.5.0
+
+stages: # 分段
+  - install
+  - build
+  - deploy
+
+cache: # 缓存
+  paths:
+    - node_modules
+    - dist
+
+install-job:
+  stage: install
+  only:
+    - master
+  script:
+    - echo "开始安装依赖"
+    - yarn install
+    - echo "安装依赖完成"
+
+build-job:
+  stage: build
+  only:
+    - master
+  script:
+    - echo "开始代码打包"
+    - yarn build
+    - echo "代码打包完成"
+
+deploy-job:
+  stage: deploy
+  only:
+    - master
+  before_script:
+    - echo "发射到目标服务器"
+  script:
+    - rm -rf /www/server/nginx/html/*
+    - cp -r dist/* /www/server/nginx/html
+#    docker镜像包
+    - docker ps -a|grep admin &&  docker stop admin && docker rm admin || echo "not exist"
+    - docker images |grep  admin && docker rmi -f admin || echo  "not exist"
+    - docker build -t admin .
+    - docker run -d --name admin -p 3006:80 admin
+  after_script:
+    - echo "完成更新

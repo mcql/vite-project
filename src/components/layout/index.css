@@ -1,0 +1,29 @@
+.header {
+    height: 100%;
+    border-bottom: 1px solid #eaeaea;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+.header-left img {
+    width: 40px;
+    height: 40px;
+    padding: 0 20px;
+}
+
+.header-left h5 {
+    font-size: 18px;
+}
+
+.header-right {
+    padding-right: 20px;
+}
