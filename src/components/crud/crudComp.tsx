@@ -48,7 +48,12 @@ interface formInter {
 
 const crudComp = (props: crudInterface, ref: any) => {
   // 通过ref 将子组件的form所有内容暴露到父组件
-  useImperativeHandle(ref, () => ({ deleteTable, createTable, updateTable }))
+  useImperativeHandle(ref, () => ({
+    deleteTable,
+    createTable,
+    updateTable,
+    tableData
+  }))
 
   const searchFormEle = useRef<formInter>()
 

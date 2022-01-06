@@ -18,6 +18,12 @@ export const routes: routesInterface[] = [
         value: 'user',
         path: '/normal/user',
         file: 'main/normal/user'
+      },
+      {
+        label: '菜单管理',
+        value: 'menu',
+        path: '/normal/menu',
+        file: 'main/normal/menu'
       }
     ]
   },

@@ -7,6 +7,7 @@ import AcSelect from './formItem/acSelect'
 import AcRadio from './formItem/acRadio'
 import AcCheckbox from './formItem/acCheckbox'
 import AcUpload from '@/components/form/formItem/acUpload'
+import AcCascader from '@/components/form/formItem/acCascader'
 
 interface formProps {
   formOptions: FormArray[]
@@ -47,6 +48,9 @@ const FormComponents = (props: formProps, ref: any) => {
         break
       case 'upload':
         dom = <AcUpload {...options} field={field} changeValue={changeValue} />
+        break
+      case 'cascader':
+        dom = <AcCascader {...options} />
         break
       default:
         dom = <div>没有该类型组件</div>

@@ -1,5 +1,5 @@
 export interface routesInterface {
-  label: string
+  title: string
   value: string
   path: string
   file: string

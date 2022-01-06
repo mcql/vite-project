@@ -23,3 +23,6 @@ export const uploadApi = (params: any): Promise<HttpResponse> => {
     }
   })
 }
+
+export const menuApi = (params: any): Promise<HttpResponse> =>
+  services.get('/vite-api/api/menu/list', { params })

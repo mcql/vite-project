@@ -13,6 +13,7 @@ interface crudInter {
   deleteTable: any
   createTable: any
   updateTable: any
+  tableData: any
 }
 
 interface formInter {
@@ -22,17 +23,17 @@ interface formInter {
   setFieldsValue: any
 }
 
-const user = () => {
-  const crudRef = useRef<crudInter>()
+const menu = () => {
   const [title, setTitle] = useState('新增')
   const [visible, setVisible] = useState(false)
   const [row, setRow] = useState()
+  const crudRef = useRef<crudInter>()
   let rolesObj: rolesObjType = {}
   for (let item of roles) {
     rolesObj[item.value] = item.label
   }
   let layout: layoutType = 'inline'
-  const userFormElement = useRef<formInter>()
+  const menuFormElement = useRef<formInter>()
   const addUser = () => {
     setTitle('新增')
     setVisible(true)
@@ -43,20 +44,20 @@ const user = () => {
     setRow(row)
   }
   const setForm = () => {
-    userFormElement.current?.setFieldsValue(row)
+    menuFormElement.current?.setFieldsValue(row)
   }
   const closeModal = () => {
-    userFormElement.current?.resetFields()
+    menuFormElement.current?.resetFields()
     setRow(undefined)
     setVisible(false)
   }
   const addSubmit = async () => {
     try {
-      await userFormElement.current?.validate()
+      await menuFormElement.current?.validate()
       if (title === '新增') {
-        await crudRef.current?.createTable(userFormElement.current?.getFields())
+        await crudRef.current?.createTable(menuFormElement.current?.getFields())
       } else {
-        await crudRef.current?.updateTable(userFormElement.current?.getFields())
+        await crudRef.current?.updateTable(menuFormElement.current?.getFields())
       }
       closeModal()
     } catch (_) {
@@ -64,8 +65,10 @@ const user = () => {
     }
   }
   const options = {
-    url: '/vite-api/api/user/list',
-    hasPagination: true,
+    url: '/vite-api/api/menu/list',
+    hasPagination: false,
+    page: 1,
+    size: 999,
     addElement: (
       <Button type="primary" onClick={addUser}>
         新增
@@ -74,24 +77,27 @@ const user = () => {
     formParams: {
       layout: layout
     },
-    formSearchOption: [
-      {
-        field: 'username',
-        type: 'input',
-        label: '用户名'
-      }
-    ],
     columns: [
       {
-        title: '姓名',
-        dataIndex: 'username'
+        title: '标题',
+        dataIndex: 'title'
       },
       {
-        title: '权限',
-        dataIndex: 'roles',
-        render: (col: any, record: any) => {
-          return <span>{rolesObj[record.roles]}</span>
-        }
+        title: '标识',
+        dataIndex: 'value'
+      },
+      {
+        title: '文件路径',
+        dataIndex: 'file'
+      },
+      {
+        title: '路径',
+        dataIndex: 'path'
+      },
+      {
+        title: '图标',
+        dataIndex: 'icon',
+        render: (col: any, record: any) => <div>{record.icon || '-'}</div>
       },
       {
         title: '操作',
@@ -117,54 +123,83 @@ const user = () => {
     ]
   }
 
-  const userForm = [
+  const menuForm = [
     {
-      field: 'username',
+      field: 'pid',
+      type: 'cascader',
+      rules: [
+        {
+          required: true,
+          message: '父级不能为空'
+        }
+      ],
+      optionsProps: {
+        options: crudRef.current?.tableData,
+        placeholder: '请选择父级',
+        changeOnSelect: true,
+        fieldNames: {
+          label: 'title',
+          value: 'id'
+        }
+      }
+    },
+    {
+      field: 'title',
       type: 'input',
       rules: [
         {
           required: true,
-          message: '用户名不能为空'
+          message: '标题不能为空'
         }
       ],
       optionsProps: {
-        placeholder: '请输入用户名'
+        placeholder: '请输入标题'
       }
     },
     {
-      field: 'password',
-      type: 'password',
+      field: 'value',
+      type: 'input',
       rules: [
         {
           required: true,
-          message: '密码不能为空'
+          message: '标识不能为空'
         }
       ],
       optionsProps: {
-        placeholder: '请输入密码'
-      }
-    },
-    {
-      field: 'roles',
-      type: 'select',
-      rules: [
-        {
-          required: true,
-          message: '权限不能为空'
-        }
-      ],
-      optionsProps: {
-        options: roles,
-        placeholder: '请选择用户权限'
+        placeholder: '请输入标识'
       }
     },
     {
       field: 'icon',
-      type: 'upload',
+      type: 'input',
       optionsProps: {
-        action: '/vite-api/api/upload',
-        limit: 1,
-        tip: '头像上传'
+        placeholder: '请输入图标'
+      }
+    },
+    {
+      field: 'path',
+      type: 'input',
+      rules: [
+        {
+          required: true,
+          message: '跳转路径不能为空'
+        }
+      ],
+      optionsProps: {
+        placeholder: '请输入跳转路径'
+      }
+    },
+    {
+      field: 'file',
+      type: 'input',
+      rules: [
+        {
+          required: true,
+          message: '文件路径不能为空'
+        }
+      ],
+      optionsProps: {
+        placeholder: '请输入文件路径'
       }
     }
   ]
@@ -191,13 +226,13 @@ const user = () => {
         footer={null}
         onCancel={closeModal}>
         <FormComponents
-          formOptions={userForm}
+          formOptions={menuForm}
           formButton={ButtonProps}
-          ref={userFormElement}
+          ref={menuFormElement}
         />
       </Modal>
     </div>
   )
 }
 
-export default user
+export default menu
