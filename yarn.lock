@@ -486,6 +486,11 @@
   dependencies:
     axios "*"
 
+"@types/bmapgl@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.npmmirror.com/@types/bmapgl/download/@types/bmapgl-0.0.5.tgz#daa92dcd501464b119c4bbfc22f9083f112d6c18"
+  integrity sha512-4LVndgKRKLT4OIgUENDb9Uf9CsT2FtIMvpfKxIQVerEYPEXlunof60qDJQb/+1bg78crv7QJiz71tfh6NfpHbg==
+
 "@types/cesium@^1.70.0":
   version "1.70.0"
   resolved "https://registry.npmmirror.com/@types/cesium/download/@types/cesium-1.70.0.tgz#081afd9d890e31a751db1df2526cb8cbf182c578"
@@ -2241,6 +2246,11 @@ map-obj@^4.0.0:
   resolved "https://registry.npmmirror.com/map-obj/download/map-obj-4.3.0.tgz?cache=0&sync_timestamp=1634552719803&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fmap-obj%2Fdownload%2Fmap-obj-4.3.0.tgz#9304f906e93faae70880da102a9f1df0ea8bb05a"
   integrity sha1-kwT5Buk/qucIgNoQKp8d8OqLsFo=
 
+mapvgl@^1.0.0-beta.139:
+  version "1.0.0-beta.141"
+  resolved "https://registry.npmmirror.com/mapvgl/download/mapvgl-1.0.0-beta.141.tgz#a0ba60d7f049abc3680a22933a480f1fe9339dce"
+  integrity sha512-ZLDmq1JM0ENrGfDBe0h8tPGdyALhnJC3uh2juitrRUwCCRkDOpV6U/ZbhEJnte+yaENWDIo4AKFwlnkpxCN7/w==
+
 meow@^8.0.0:
   version "8.1.2"
   resolved "https://registry.nlark.com/meow/download/meow-8.1.2.tgz?cache=0&sync_timestamp=1627560954223&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fmeow%2Fdownload%2Fmeow-8.1.2.tgz#bcbe45bda0ee1729d350c03cffc8395a36c4e897"
@@ -2641,6 +2651,16 @@ range-parser@~1.2.1:
   resolved "https://registry.npmmirror.com/range-parser/download/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha1-PPNwI9GZ4cJNGlW4SADC8+ZGgDE=
 
+react-bmapgl@^0.1.28:
+  version "0.1.28"
+  resolved "https://registry.npmmirror.com/react-bmapgl/download/react-bmapgl-0.1.28.tgz#7adf75dfcedbbab39aa9b0ce364f60195edc2a6b"
+  integrity sha512-CZXjPf8vrrhrd3JPwjCFTSBJv8XXx3vvCST9SO+oXbwlpzKd/ajbwna9GDhmC5nRt3zO7s8S4juS/csS+WVV2g==
+  dependencies:
+    mapvgl "^1.0.0-beta.139"
+    react "^17.0.1"
+    react-dom "^17.0.1"
+    shallowequal "^1.1.0"
+
 react-clientside-effect@^1.2.5:
   version "1.2.5"
   resolved "https://registry.nlark.com/react-clientside-effect/download/react-clientside-effect-1.2.5.tgz#e2c4dc3c9ee109f642fac4f5b6e9bf5bcd2219a3"
@@ -2648,7 +2668,7 @@ react-clientside-effect@^1.2.5:
   dependencies:
     "@babel/runtime" "^7.12.13"
 
-react-dom@^17.0.0:
+react-dom@^17.0.0, react-dom@^17.0.1:
   version "17.0.2"
   resolved "https://registry.npmmirror.com/react-dom/download/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
   integrity sha1-7P+2hF462Nv83EmPDQqTlzZQLCM=
@@ -2704,7 +2724,7 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^17.0.0:
+react@^17.0.0, react@^17.0.1:
   version "17.0.2"
   resolved "https://registry.npmmirror.com/react/download/react-17.0.2.tgz?cache=0&sync_timestamp=1636734315607&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Freact%2Fdownload%2Freact-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha1-0LXMUW0p6z7uOD91tihkz7aAADc=

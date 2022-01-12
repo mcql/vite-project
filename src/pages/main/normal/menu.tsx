@@ -80,45 +80,51 @@ const menu = () => {
     columns: [
       {
         title: '标题',
-        dataIndex: 'title'
+        dataIndex: 'title',
+        width: '300px'
       },
       {
         title: '标识',
-        dataIndex: 'value'
+        dataIndex: 'value',
+        width: '200px'
       },
       {
         title: '文件路径',
-        dataIndex: 'file'
+        dataIndex: 'file',
+        width: '220px'
       },
       {
         title: '路径',
-        dataIndex: 'path'
+        dataIndex: 'path',
+        width: '220px'
       },
       {
         title: '图标',
         dataIndex: 'icon',
+        width: '220px',
         render: (col: any, record: any) => <div>{record.icon || '-'}</div>
       },
       {
         title: '操作',
         dataIndex: 'id',
-        render: (col: any, record: any) => (
-          <div>
-            {record.roles !== 0 && (
-              <div>
-                <Button
-                  type="text"
-                  status="danger"
-                  onClick={() => crudRef.current?.deleteTable(record.id)}>
-                  删除
-                </Button>
-                <Button type="text" onClick={() => editUser(record)}>
-                  修改
-                </Button>
-              </div>
-            )}
-          </div>
-        )
+        render: (col: any, record: any) =>
+          record.id !== 0 && (
+            <div>
+              {record.roles !== 0 && (
+                <div>
+                  <Button
+                    type="text"
+                    status="danger"
+                    onClick={() => crudRef.current?.deleteTable(record.id)}>
+                    删除
+                  </Button>
+                  <Button type="text" onClick={() => editUser(record)}>
+                    修改
+                  </Button>
+                </div>
+              )}
+            </div>
+          )
       }
     ]
   }
@@ -200,6 +206,22 @@ const menu = () => {
       ],
       optionsProps: {
         placeholder: '请输入文件路径'
+      }
+    },
+    {
+      field: 'show',
+      type: 'radio',
+      optionsProps: {
+        options: [
+          {
+            label: '是',
+            value: true
+          },
+          {
+            label: '否',
+            value: false
+          }
+        ]
       }
     }
   ]

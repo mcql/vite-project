@@ -1,44 +1,20 @@
-import { useRef } from 'react'
-import FormComponents from '@/components/form/index'
-import { boardForm } from '@/const/board'
-import { Form, Button } from '@arco-design/web-react'
 import './index.css'
-
-interface formInter {
-  form: any
-}
+import Map from 'react-bmapgl/Map'
 
 const board = () => {
-  // 定义ref 获取子组件的属性及方法
-  const boardFormElement = useRef<formInter>()
-
-  const submit = async () => {
-    try {
-      // 拿到子组件的方法做校验及提交
-      await boardFormElement.current?.form.validate()
-      console.log(boardFormElement.current?.form.getFields())
-    } catch (_) {
-      console.log('验证失败')
-    }
-  }
-
-  // 插槽 通过props将dom传到子组件
-  const ButtonProps = (
-    <Form.Item wrapperCol={{ span: 24 }}>
-      <Button type="primary" onClick={submit} long={true}>
-        提交
-      </Button>
-    </Form.Item>
-  )
-
   return (
-    <section className="board">
-      <FormComponents
-        formOptions={boardForm}
-        formButton={ButtonProps}
-        ref={boardFormElement}
+    <div className="board">
+      <Map
+        center={{ lng: 116.402544, lat: 39.928216 }}
+        enableRotate={true}
+        enableScrollWheelZoom={true}
+        zoom="5"
+        mapStyleV2={{ styleId: 'ce829ae594a409d60d8c62c772f1b460' }}
+        maxZoom={7}
+        minZoom={4}
+        style={{ height: '100%' }}
       />
-    </section>
+    </div>
   )
 }
 

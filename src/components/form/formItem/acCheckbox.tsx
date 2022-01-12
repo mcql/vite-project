@@ -4,6 +4,7 @@ import { optionsProps } from '@/types/form'
 interface checkBoxInterface extends optionsProps {
   changeValue(field: string, value: any): void
   field: string
+  value: any
 }
 
 const acSelect = (props: checkBoxInterface) => {
@@ -13,6 +14,7 @@ const acSelect = (props: checkBoxInterface) => {
 
   return (
     <Checkbox.Group
+      value={props.value}
       direction={props.direction}
       options={props.options}
       onChange={changeValue}

@@ -24,6 +24,12 @@ export const routes: routesInterface[] = [
         value: 'menu',
         path: '/normal/menu',
         file: 'main/normal/menu'
+      },
+      {
+        title: '表单测试',
+        value: 'form',
+        path: '/normal/form',
+        file: 'main/normal/form'
       }
     ]
   },

@@ -3,6 +3,6 @@ export interface routesInterface {
   value: string
   path: string
   file: string
-  isShow?: boolean
+  show?: boolean
   children?: routesInterface[]
 }

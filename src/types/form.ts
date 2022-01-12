@@ -12,7 +12,12 @@ export interface FormArray {
 }
 
 export interface optionsProps {
-  options?: Array<{ label: string; value: any; disabled?: boolean }>
+  options?: Array<{
+    label: string
+    value: any
+    disabled?: boolean
+    title?: string
+  }>
   placeholder?: string
   direction?: 'horizontal' | 'vertical' | undefined
   action?: string

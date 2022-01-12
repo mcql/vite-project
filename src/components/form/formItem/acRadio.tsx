@@ -4,6 +4,7 @@ import { optionsProps } from '@/types/form'
 interface radioInterface extends optionsProps {
   changeValue(field: string, value: any): void
   field: string
+  value: any
 }
 
 const acRadio = (props: radioInterface) => {
@@ -13,6 +14,7 @@ const acRadio = (props: radioInterface) => {
 
   return (
     <Radio.Group
+      value={props.value}
       direction={props.direction}
       options={props.options}
       onChange={changeValue}
