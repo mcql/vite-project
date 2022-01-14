@@ -11,7 +11,7 @@ import { getGeocoder, searchTdt } from '@/services/td'
 import { addMark } from '@/components/cesium/widget/addMark'
 import { flyTo } from '@/components/cesium/widget/flyTo'
 import SearchAddress from '@/components/cesium/widget/searchAddress'
-import { addTiles } from '@/components/cesium/widget/addTiles'
+// import { addTiles } from '@/components/cesium/widget/addTiles'
 // import { addGeoJson } from '@/components/cesium/widget/addGeoJson'
 // import { addModel } from '@/components/cesium/widget/addModel'
 import { addLayer } from '@/components/cesium/widget/addLayer'
@@ -47,7 +47,7 @@ const earth = () => {
     // 增加图层
     addLayer(viewer)
     // 增加tiles
-    addTiles(viewer, base.tilesJson, true)
+    // addTiles(viewer, base.tilesJson, true)
     // 地形
     viewer.terrainProvider = new ArcGISTiledElevationTerrainProvider({
       url: base.arcgisTerrain
@@ -55,11 +55,16 @@ const earth = () => {
     // 加载geoJSON
     // await addGeoJson(viewer, '/geoJson.json')
     // 增加模型
-    // addModel(viewer, '/gltf/RobotExpressive.glb', {
-    //   log: 113.23,
-    //   lat: 23.16,
-    //   height: 500
-    // })
+    // addModel(
+    //   viewer,
+    //   '/gltf/shanghai.gltf',
+    //   {
+    //     log: 113.23,
+    //     lat: 23.16,
+    //     height: 0
+    //   },
+    //   true
+    // )
   })
 
   const getAddress = async (address: string) => {

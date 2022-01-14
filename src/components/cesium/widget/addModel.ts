@@ -18,8 +18,7 @@ export const addModel = (
   viewer.scene.primitives.add(
     Model.fromGltf({
       url: url,
-      modelMatrix: modelMatrix,
-      scale: 10
+      modelMatrix: modelMatrix
     })
   )
   fly &&
